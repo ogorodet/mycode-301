@@ -1,0 +1,15 @@
+---
+- name: monday morning review
+  connection: local
+  hosts: ansibleController
+
+  tasks:
+    
+    - name: Http lookup to alta3.com
+      ansible.builtin.url:
+        url: https://alta3.com
+      register: results
+
+    - name: Display results
+      ansible.buildtin.debug:
+        var: results
