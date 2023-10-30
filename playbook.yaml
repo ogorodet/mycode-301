@@ -13,3 +13,7 @@
     - name: Display results
       ansible.builtin.debug:
         var: results
+
+    - name: do sometbhing strange
+      debug:
+        msg: "Strangeness happens here"
