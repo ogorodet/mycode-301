@@ -1,0 +1,19 @@
+---
+- name: Looping across Windows Services
+  hosts: windows
+  gather_facts: true
+
+  tasks:
+  
+    - name: Grab a list of windows services
+      ansible.windows.win_service_info:
+      register: results
+    
+    - name: What results did we get?
+      ansible.builtin.debug:
+              var: item.get("display_name")    
+      loop: "{{ results.get('services') }}"
+      loop_control:
+              label: "{{ item.display_name }}"
+    
+
